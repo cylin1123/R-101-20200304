@@ -970,6 +970,7 @@ x.inv</code></pre>
 <div id="因子factor" class="section level3">
 <h3><B> 03. 因子Factor</B></h3>
 <p>因子用來表示類別資料，亦稱“類別變數”</p>
+<p><br></p>
 <pre class="r"><code>animal &lt;- c(&quot;Cat&quot;,&quot;Ant&quot;,&quot;Dog&quot;,&quot;Cat&quot;,&quot;Dog&quot;)
 fac1 &lt;- factor(animal)
 fac1</code></pre>
@@ -985,8 +986,69 @@ fac1</code></pre>
 <pre><code>##  Factor w/ 3 levels &quot;Ant&quot;,&quot;Cat&quot;,&quot;Dog&quot;: 2 1 3 2 3</code></pre>
 <p><br></p>
 </div>
+<div id="資料框架dataframe" class="section level3">
+<h3><B> 04.資料框架DataFrame</B></h3>
+<pre class="r"><code>id &lt;- c(001,002,003,004,005)
+age &lt;- c(30,50,35,22,18)
+sex &lt;- c(&quot;Male&quot;,&quot;Female&quot;,&quot;Female&quot;,&quot;Male&quot;,&quot;Male&quot;)
+salary &lt;-c(43000,50000,35000,32000,25000)
+country &lt;- c(&quot;Taipei&quot;,&quot;Taichung&quot;,&quot;Chiayi&quot;,&quot;Taoyuan&quot;,&quot;Kaohsiung&quot;)
+
+x_dataframe &lt;- data.frame(id,age,sex,salary,country)
+x_dataframe</code></pre>
+<pre><code>##   id age    sex salary   country
+## 1  1  30   Male  43000    Taipei
+## 2  2  50 Female  50000  Taichung
+## 3  3  35 Female  35000    Chiayi
+## 4  4  22   Male  32000   Taoyuan
+## 5  5  18   Male  25000 Kaohsiung</code></pre>
+<pre class="r"><code>x_dataframe[2]</code></pre>
+<pre><code>##   age
+## 1  30
+## 2  50
+## 3  35
+## 4  22
+## 5  18</code></pre>
+<pre class="r"><code>x_dataframe[&quot;age&quot;]</code></pre>
+<pre><code>##   age
+## 1  30
+## 2  50
+## 3  35
+## 4  22
+## 5  18</code></pre>
+<pre class="r"><code>x_dataframe$age</code></pre>
+<pre><code>## [1] 30 50 35 22 18</code></pre>
+<pre class="r"><code>class(x_dataframe[2])</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>class(x_dataframe[&quot;age&quot;])</code></pre>
+<pre><code>## [1] &quot;data.frame&quot;</code></pre>
+<pre class="r"><code>class(x_dataframe$age)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>x_dataframe[2,2]</code></pre>
+<pre><code>## [1] 50</code></pre>
+<pre class="r"><code>x_dataframe[2,3]</code></pre>
+<pre><code>## [1] Female
+## Levels: Female Male</code></pre>
+<pre class="r"><code>x_dataframe[2,]</code></pre>
+<pre><code>##   id age    sex salary  country
+## 2  2  50 Female  50000 Taichung</code></pre>
+<pre class="r"><code>edit(x_dataframe)</code></pre>
+<pre><code>##   id age    sex salary   country
+## 1  1  30   Male  43000    Taipei
+## 2  2  50 Female  50000  Taichung
+## 3  3  35 Female  35000    Chiayi
+## 4  4  22   Male  32000   Taoyuan
+## 5  5  18   Male  25000 Kaohsiung</code></pre>
+<pre class="r"><code>x_dataframe</code></pre>
+<pre><code>##   id age    sex salary   country
+## 1  1  30   Male  43000    Taipei
+## 2  2  50 Female  50000  Taichung
+## 3  3  35 Female  35000    Chiayi
+## 4  4  22   Male  32000   Taoyuan
+## 5  5  18   Male  25000 Kaohsiung</code></pre>
+</div>
 <div id="列表list" class="section level3">
-<h3><B> 04.列表LIST</B></h3>
+<h3><B> 05.列表LIST</B></h3>
 <p><br></p>
 <div id="使用data.frame建立list" class="section level4">
 <h4>使用data.frame()建立List</h4>

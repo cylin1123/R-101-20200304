@@ -422,7 +422,7 @@ x%*%x.inv
 
 因子用來表示類別資料，亦稱"類別變數"
 
-
+<br>
 
 ```{r}
 animal <- c("Cat","Ant","Dog","Cat","Dog")
@@ -437,12 +437,50 @@ mode(fac1)
 str(fac1)
 ```
 
-
-
-
 <br>
 
-### <B> 04.列表LIST</B>
+### <B> 04.資料框架DataFrame</B>
+```{r}
+id <- c(001,002,003,004,005)
+age <- c(30,50,35,22,18)
+sex <- c("Male","Female","Female","Male","Male")
+salary <-c(43000,50000,35000,32000,25000)
+country <- c("Taipei","Taichung","Chiayi","Taoyuan","Kaohsiung")
+
+x_dataframe <- data.frame(id,age,sex,salary,country)
+x_dataframe
+```
+
+```{r}
+x_dataframe[2]
+x_dataframe["age"]
+x_dataframe$age
+
+class(x_dataframe[2])
+class(x_dataframe["age"])
+class(x_dataframe$age)
+```
+
+```{r}
+x_dataframe[2,2]
+x_dataframe[2,3]
+x_dataframe[2,]
+```
+
+```{r}
+edit(x_dataframe)
+```
+
+
+
+```{r}
+x_dataframe
+```
+
+
+### <B> 05.列表LIST</B>
+
+
 
 
 <br>
