@@ -369,13 +369,14 @@ summary {
 </div>
 
 
-<div id="向量vector" class="section level1">
-<h1>01. 向量Vector</h1>
+<div id="向量vector" class="section level3">
+<h3><B>01.向量Vector</B></h3>
 <ul>
 <li>必須由相同的資料型態元素所組成</li>
 <li>建立向量 :　使用c函數 / 使用assign函數 / 使用「:」</li>
 <li>向量取值 : 變數名稱[index]，index起始值為1</li>
 </ul>
+<p><br></p>
 <pre class="r"><code>#使用c函數建立向量
 v1 &lt;- c(5,7.5,10,12.5,15,25,20,17.5)
 v1</code></pre>
@@ -400,19 +401,182 @@ v3</code></pre>
 <pre><code>## [1] 10</code></pre>
 <pre class="r"><code>mode(v3)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>seq(2, 5)  </code></pre>
+<pre><code>## [1] 2 3 4 5</code></pre>
+<pre class="r"><code>seq(2, 5, by = 0.5)</code></pre>
+<pre><code>## [1] 2.0 2.5 3.0 3.5 4.0 4.5 5.0</code></pre>
+<pre class="r"><code>seq(2, 5, length = 5)</code></pre>
+<pre><code>## [1] 2.00 2.75 3.50 4.25 5.00</code></pre>
+<pre class="r"><code>c(1:4, 8, 9, c(12, 23))</code></pre>
+<pre><code>## [1]  1  2  3  4  8  9 12 23</code></pre>
+<p>vector 函數可以用來建立特定類型與長度的向量 <br></p>
+<p>說明: 使用vector 所建立的向量，其內部的值都是 0、FALSE 或 NULL 這類的空值 <br></p>
+<pre class="r"><code>vector(&quot;numeric&quot;, 3)</code></pre>
+<pre><code>## [1] 0 0 0</code></pre>
+<pre class="r"><code>vector(&quot;logical&quot;, 3)</code></pre>
+<pre><code>## [1] FALSE FALSE FALSE</code></pre>
+<pre class="r"><code>vector(&quot;character&quot;, 3)</code></pre>
+<pre><code>## [1] &quot;&quot; &quot;&quot; &quot;&quot;</code></pre>
+<pre class="r"><code>vector(&quot;list&quot;, 3)</code></pre>
+<pre><code>## [[1]]
+## NULL
+## 
+## [[2]]
+## NULL
+## 
+## [[3]]
+## NULL</code></pre>
+<p>length 也可以讓使用者直接改變向量的長度屬性 <br></p>
+<p>用途 : 在處理大量運算，需要預先配置記憶體時，有時候就會使用增加向量長度的方式來處理</p>
+<pre class="r"><code>x &lt;- 1:10
+length(x) &lt;- 3
+x</code></pre>
+<pre><code>## [1] 1 2 3</code></pre>
+<pre class="r"><code>length(x) &lt;- 6
+x</code></pre>
+<pre><code>## [1]  1  2  3 NA NA NA</code></pre>
+<div id="向量元素名稱" class="section level5">
+<h5>向量元素名稱</h5>
+<ul>
+<li>每一個元素都可以有一個自己的名稱</li>
+<li>使用 name = value 的方式指定元素的名稱</li>
+</ul>
+<pre class="r"><code>c(foo = 2, bar = 4)</code></pre>
+<pre><code>## foo bar 
+##   2   4</code></pre>
+<pre class="r"><code>c(foo = 2, bar = 4, &quot;hello world&quot; = 6, 8)</code></pre>
+<pre><code>##         foo         bar hello world             
+##           2           4           6           8</code></pre>
+<pre class="r"><code>x &lt;- 1:4
+names(x) &lt;- c(&quot;foo&quot;, &quot;bar&quot;, &quot;hello world&quot;, &quot;&quot;)
+x</code></pre>
+<pre><code>##         foo         bar hello world             
+##           1           2           3           4</code></pre>
+<pre class="r"><code>names(x)</code></pre>
+<pre><code>## [1] &quot;foo&quot;         &quot;bar&quot;         &quot;hello world&quot; &quot;&quot;</code></pre>
+<pre class="r"><code>names(1:10)</code></pre>
+<pre><code>## NULL</code></pre>
+</div>
+<div id="索引向量" class="section level4">
+<h4><b>索引向量</b></h4>
+<ul>
+<li>使用[]</li>
+<li>邏輯向量、正整數向量、負整數向量與字元向量</li>
+</ul>
+<pre class="r"><code>v3 &lt;- 1:10
+v3</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6  7  8  9 10</code></pre>
 <pre class="r"><code>v3[3]</code></pre>
 <pre><code>## [1] 3</code></pre>
 <pre class="r"><code>v3[1:5]</code></pre>
 <pre><code>## [1] 1 2 3 4 5</code></pre>
+<div id="邏輯向量" class="section level5">
+<h5>邏輯向量</h5>
+<p>說明 : 索引向量必須和被挑選元素的向量長度一致。向量中對應索引向量為 TRUE 的元素將會被選出，而那些對應 FALSE 的元素則被忽略</p>
+<pre class="r"><code>x &lt;- c(0,1, NA, 3,4)
+y &lt;- x[!is.na(x)]
+y</code></pre>
+<pre><code>## [1] 0 1 3 4</code></pre>
+<pre class="r"><code>x &lt;- c(0, -3, -1, NA,4 ,5, 8)
+x &lt;- x + 1
+x</code></pre>
+<pre><code>## [1]  1 -2  0 NA  5  6  9</code></pre>
+<pre class="r"><code>z &lt;- x[(!is.na(x)) &amp; x &gt; 1]
+z</code></pre>
+<pre><code>## [1] 5 6 9</code></pre>
 </div>
-<div id="陣列array" class="section level1">
-<h1>02. 陣列Array</h1>
+<div id="正整數向量" class="section level5">
+<h5>正整數向量</h5>
+<pre class="r"><code>x &lt;- 10:20
+x</code></pre>
+<pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre class="r"><code>y &lt;- x[1:5]
+y</code></pre>
+<pre><code>## [1] 10 11 12 13 14</code></pre>
+<pre class="r"><code>z &lt;- x[ c(1, 2, 3, 8, 9, 9) ]
+z</code></pre>
+<pre><code>## [1] 10 11 12 17 18 18</code></pre>
 </div>
-<div id="因子factor" class="section level1">
-<h1>03. 因子Factor</h1>
+<div id="負整數向量" class="section level5">
+<h5>負整數向量</h5>
+<p>說明: 負數的意思是將指定的元素排除，將剩餘的元素選出</p>
+<pre class="r"><code>x &lt;- 10:20
+x</code></pre>
+<pre><code>##  [1] 10 11 12 13 14 15 16 17 18 19 20</code></pre>
+<pre class="r"><code>y &lt;- x[-(1:5)]
+y</code></pre>
+<pre><code>## [1] 15 16 17 18 19 20</code></pre>
 </div>
-<div id="列表list" class="section level1">
-<h1>04.列表LIST</h1>
+<div id="字元向量" class="section level5">
+<h5>字元向量</h5>
+<p>說明 : 只能用在可以用 names 屬性區別其元素的向量，在使用之前必須以 names 函數先設定 names 屬性</p>
+<pre class="r"><code>fruit &lt;- c(5, 10, 1, 20)
+fruit</code></pre>
+<pre><code>## [1]  5 10  1 20</code></pre>
+<pre class="r"><code>names(fruit) &lt;- c(&quot;orange&quot;, &quot;banana&quot;, &quot;apple&quot;, &quot;peach&quot;)
+fruit</code></pre>
+<pre><code>## orange banana  apple  peach 
+##      5     10      1     20</code></pre>
+<pre class="r"><code>lunch &lt;- fruit[&quot;apple&quot;]
+lunch</code></pre>
+<pre><code>## apple 
+##     1</code></pre>
+<pre class="r"><code>dinner &lt;- fruit[c(&quot;orange&quot;, &quot;peach&quot;)]
+dinner</code></pre>
+<pre><code>## orange  peach 
+##      5     20</code></pre>
+</div>
+<div id="使用索引更新元素值" class="section level5">
+<h5>使用索引更新元素值</h5>
+<pre class="r"><code>x &lt;- c(1, 2, NA, NA, 3)
+x</code></pre>
+<pre><code>## [1]  1  2 NA NA  3</code></pre>
+<pre class="r"><code>x[is.na(x)] &lt;- 0
+x</code></pre>
+<pre><code>## [1] 1 2 0 0 3</code></pre>
+</div>
+<div id="which函數" class="section level5">
+<h5><b> which函數</b></h5>
+<pre class="r"><code>x &lt;- -5:5
+x</code></pre>
+<pre><code>##  [1] -5 -4 -3 -2 -1  0  1  2  3  4  5</code></pre>
+<pre class="r"><code>which(x %% 3 == 2)</code></pre>
+<pre><code>## [1]  2  5  8 11</code></pre>
+<pre class="r"><code>which.min(x)</code></pre>
+<pre><code>## [1] 1</code></pre>
+<pre class="r"><code>which.max(x)</code></pre>
+<pre><code>## [1] 11</code></pre>
+</div>
+<div id="重複向量" class="section level5">
+<h5>重複向量</h5>
+<pre class="r"><code>1:4</code></pre>
+<pre><code>## [1] 1 2 3 4</code></pre>
+<pre class="r"><code>1:8</code></pre>
+<pre><code>## [1] 1 2 3 4 5 6 7 8</code></pre>
+<pre class="r"><code>1:4 + 1:8</code></pre>
+<pre><code>## [1]  2  4  6  8  6  8 10 12</code></pre>
+<pre class="r"><code>1:2 + 1:7</code></pre>
+<pre><code>## Warning in 1:2 + 1:7: 較長的物件長度並非較短物件長度的倍數</code></pre>
+<pre><code>## [1] 2 4 4 6 6 8 8</code></pre>
+</div>
+<div id="使用rep函數建立重覆向量" class="section level5">
+<h5><b>使用rep函數建立重覆向量</b></h5>
+<pre class="r"><code>rep(1:3, 5)  #rep(要重複向量,重複次數)</code></pre>
+<pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+</div>
+</div>
+</div>
+<div id="陣列array" class="section level3">
+<h3><B> 02. 陣列Array</B></h3>
+<p><br></p>
+</div>
+<div id="因子factor" class="section level3">
+<h3><B> 03. 因子Factor</B></h3>
+<p><br></p>
+</div>
+<div id="列表list" class="section level3">
+<h3><B> 04.列表LIST</B></h3>
+<p><br></p>
 <div id="使用data.frame建立list" class="section level4">
 <h4>使用data.frame()建立List</h4>
 <pre class="r"><code>StuDF &lt;- data.frame(SID=c(1,2,3,4,5),NAME=c(&quot;魯夫&quot;,&quot;索隆&quot;,&quot;香吉士&quot;,&quot;騙人布&quot;,&quot;娜美&quot;),SCORE=c(50,60,80,80,90))

@@ -127,9 +127,8 @@ class(sqrt(5:10))
 ##### <strong>文字</strong>
 
 ```{r}
-class(3)
-class(3L)
-class(2 + 3i)
+x<-"Hello World"
+x
 ```
 
 <br>
