@@ -9,7 +9,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
-<meta name="author" content="Nick" />
+<meta name="author" content="Nick Lin" />
 
 
 <title>變數&amp;資料型態</title>
@@ -363,8 +363,7 @@ summary {
 
 
 <h1 class="title toc-ignore">變數&amp;資料型態</h1>
-<h4 class="author">Nick</h4>
-<h4 class="date">2020/2/1</h4>
+<h4 class="author">Nick Lin</h4>
 
 </div>
 
@@ -379,6 +378,7 @@ summary {
 <li>使用全小寫英文，不同單字之間以底線 _ 相隔</li>
 <li>使用英文名詞為值（Values）和資料（Data）命名、使用英文動詞為函數（Functions）命名，讓名稱簡潔且具有意義</li>
 <li>避免使用保留字與內建函數作為物件的命名</li>
+<li>保留字 :　if,else,repeat,while,function,for,in,next,break,TRUE,FALSE,NULL,Inf,NaN,NA　</li>
 </ul>
 <p><br></p>
 </div>
@@ -386,7 +386,7 @@ summary {
 <h4><strong>物件名稱(變數)指派</strong></h4>
 <ul>
 <li>物件名稱(變數)&lt;-值</li>
-<li>值-&gt;物件9名稱(變數)</li>
+<li>值-&gt;物件名稱(變數)</li>
 <li>物件名稱變數)=值</li>
 </ul>
 <pre class="r"><code>x&lt;-5
@@ -407,7 +407,7 @@ x</code></pre>
 <h4><B>物件基本屬性</B></h4>
 <ul>
 <li>資料型態 (Mode / class)</li>
-<li>長度 (Length)</li>
+<li>長度 (Length) : 計算元素個數</li>
 </ul>
 <pre class="r"><code>class(c(TRUE, FALSE))</code></pre>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
@@ -415,6 +415,9 @@ x</code></pre>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <pre class="r"><code>length(c(TRUE, FALSE))</code></pre>
 <pre><code>## [1] 2</code></pre>
+<pre class="r"><code>x&lt;-10
+str(x) # str()檢查與總覽各類變數型態</code></pre>
+<pre><code>##  num 10</code></pre>
 <p><br></p>
 </div>
 <div id="基本資料型態" class="section level4">
@@ -422,7 +425,6 @@ x</code></pre>
 <ul>
 <li>數值(Numeric)</li>
 <li>文字(Character)</li>
-<li>複數(Complex)</li>
 <li>邏輯(Logical)</li>
 </ul>
 <p><br></p>
@@ -433,10 +435,19 @@ x</code></pre>
 <li>Integer：整數</li>
 <li>Complex：複數 : z=a+bi</li>
 </ul>
-<pre class="r"><code>class(3)</code></pre>
+<pre class="r"><code>x&lt;-3
+x</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>class(x)</code></pre>
 <pre><code>## [1] &quot;numeric&quot;</code></pre>
-<pre class="r"><code>class(3L)</code></pre>
+<pre class="r"><code>x&lt;-3L
+x</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>class(x)</code></pre>
 <pre><code>## [1] &quot;integer&quot;</code></pre>
+<pre class="r"><code>x&lt;-2+3i
+x</code></pre>
+<pre><code>## [1] 2+3i</code></pre>
 <pre class="r"><code>class(2 + 3i)</code></pre>
 <pre><code>## [1] &quot;complex&quot;</code></pre>
 <p><br></p>
@@ -473,18 +484,32 @@ is.complex(y)</code></pre>
 <pre><code>## [1] 1.797693e+308</code></pre>
 <pre class="r"><code>.Machine$double.xmin</code></pre>
 <pre><code>## [1] 2.225074e-308</code></pre>
+<pre class="r"><code>print(2^53, digits=20) </code></pre>
+<pre><code>## [1] 9007199254740992</code></pre>
+<pre class="r"><code>print(2^53+1, digits=20) # +1後，數值仍與2^53相同</code></pre>
+<pre><code>## [1] 9007199254740992</code></pre>
+<pre class="r"><code>#library(bit64) # 導入bit64 package
+#print(as.integer64(2)^53, digits=20)</code></pre>
+<pre class="r"><code>#install.packages(&quot;bit64&quot;)</code></pre>
+<pre class="r"><code>#print(as.integer64(2)^53+1, digits=20)# 導入bit64後，可得正確答案</code></pre>
 </div>
 <div id="文字" class="section level5">
 <h5><strong>文字</strong></h5>
 <pre class="r"><code>x&lt;-&quot;Hello World&quot;
 x</code></pre>
 <pre><code>## [1] &quot;Hello World&quot;</code></pre>
+<pre class="r"><code>x&lt;-&quot;10&quot;
+y&lt;-&quot;20&quot;
+#x+y</code></pre>
 <p><br></p>
 </div>
 <div id="邏輯" class="section level5">
 <h5><strong>邏輯</strong></h5>
-<pre class="r"><code>x&lt;-T
-y&lt;-F
+<pre class="r"><code>x&lt;-TRUE
+#x&lt;-T
+
+y&lt;-FALSE
+#y&lt;-F
 mode(x)</code></pre>
 <pre><code>## [1] &quot;logical&quot;</code></pre>
 <pre class="r"><code>mode(y)</code></pre>
@@ -549,6 +574,24 @@ mode(x)</code></pre>
 <div id="nan" class="section level4">
 <h4><b>NaN</b></h4>
 <p>表示無意義，即“not a number”</p>
+<p><br></p>
+</div>
+<div id="錯誤訊息" class="section level4">
+<h4><b>錯誤訊息</b></h4>
+<ul>
+<li><p>Message：有可能的錯誤通知，程式會繼續執行</p></li>
+<li><p>Warning：警告有錯誤，但程式會繼續執行</p></li>
+</ul>
+<pre class="r"><code>log(-1)</code></pre>
+<pre><code>## Warning in log(-1): 產生了 NaNs</code></pre>
+<pre><code>## [1] NaN</code></pre>
+<ul>
+<li>Error：有錯誤，無法繼續執行程式</li>
+</ul>
+<pre class="r"><code>#mena(10,20)</code></pre>
+<ul>
+<li>Condition：顯示可能會發生的情況</li>
+</ul>
 </div>
 </div>
 </div>

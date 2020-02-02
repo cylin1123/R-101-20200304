@@ -480,6 +480,26 @@ x_dataframe
 
 ### <B> 05.列表LIST</B>
 
+列表包含不同類型的元素，例如 - 數字，字符串，向量和另一個列表等。一個列表還可以包含一個矩陣或一個函數作為它的元素
+
+
+```{r}
+list_data <- list("Ant",  c(10,20,30), TRUE, 160, 50)
+list_data
+```
+
+命名列表元素
+
+```{r}
+names(list_data) <- c("Name", "Score", "Maried", "Height","Weight")
+list_data
+```
+
+```{r}
+list_data$Name
+list_data$Score
+```
+
 
 
 

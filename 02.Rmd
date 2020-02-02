@@ -1,7 +1,6 @@
 ---
 title: "變數&資料型態"
-author: "Nick"
-date: "2020/2/1"
+author: "Nick Lin"
 output: html_document
 ---
 
@@ -18,13 +17,14 @@ knitr::opts_chunk$set(echo = TRUE)
 - 使用全小寫英文，不同單字之間以底線 _ 相隔
 - 使用英文名詞為值（Values）和資料（Data）命名、使用英文動詞為函數（Functions）命名，讓名稱簡潔且具有意義
 - 避免使用保留字與內建函數作為物件的命名
+- 保留字 :　if,else,repeat,while,function,for,in,next,break,TRUE,FALSE,NULL,Inf,NaN,NA　
 
 <br>
 
 #### <strong>物件名稱(變數)指派</strong>
 
 - 物件名稱(變數)<-值
-- 值->物件9名稱(變數)
+- 值->物件名稱(變數)
 - 物件名稱變數)=值
 
 ```{r}
@@ -43,13 +43,19 @@ z
 #### <B>物件基本屬性</B>
 
 - 資料型態 (Mode / class) 
-- 長度 (Length)
+- 長度 (Length) : 計算元素個數
 
 ```{r}
 class(c(TRUE, FALSE))
 mode(c(TRUE, FALSE))
 length(c(TRUE, FALSE))
 ```
+
+```{r}
+x<-10
+str(x) # str()檢查與總覽各類變數型態
+```
+
 
 <br>
 
@@ -58,7 +64,6 @@ length(c(TRUE, FALSE))
 #### <strong>基本資料型態</strong>
 - 數值(Numeric)
 - 文字(Character)
-- 複數(Complex)
 - 邏輯(Logical)
 
 <br>
@@ -69,8 +74,17 @@ length(c(TRUE, FALSE))
 - Complex：複數 : z=a+bi
 
 ```{r}
-class(3)
-class(3L)
+x<-3
+x
+class(x)
+
+x<-3L
+x
+class(x)
+
+
+x<-2+3i
+x
 class(2 + 3i)
 ```
 <br>
@@ -124,11 +138,33 @@ class(sqrt(5:10))
 ```
 
 
+```{r}
+print(2^53, digits=20) 
+print(2^53+1, digits=20) # +1後，數值仍與2^53相同
+```
+
+```{r}
+#library(bit64) # 導入bit64 package
+#print(as.integer64(2)^53, digits=20)
+```
+```{r}
+#install.packages("bit64")
+```
+```{r}
+#print(as.integer64(2)^53+1, digits=20)# 導入bit64後，可得正確答案
+```
+
+
+
 ##### <strong>文字</strong>
 
 ```{r}
 x<-"Hello World"
 x
+
+x<-"10"
+y<-"20"
+#x+y
 ```
 
 <br>
@@ -138,12 +174,17 @@ x
 ##### <strong>邏輯</strong>
 
 ```{r}
-x<-T
-y<-F
+
+x<-TRUE
+#x<-T
+
+y<-FALSE
+#y<-F
 mode(x)
 mode(y)
 
 ```
+
 
 <br>
 
@@ -185,6 +226,50 @@ class(as.integer(F))
 
 #### <b>NaN</b>
 表示無意義，即"not a number"
+
+<br>
+
+#### <b>錯誤訊息</b>
+
+- Message：有可能的錯誤通知，程式會繼續執行
+
+- Warning：警告有錯誤，但程式會繼續執行
+
+```{r}
+
+log(-1)
+```
+
+- Error：有錯誤，無法繼續執行程式
+
+```{r}
+#mena(10,20)
+```
+
+- Condition：顯示可能會發生的情況
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
