@@ -969,6 +969,20 @@ x.inv</code></pre>
 </div>
 <div id="因子factor" class="section level3">
 <h3><B> 03. 因子Factor</B></h3>
+<p>因子用來表示類別資料，亦稱“類別變數”</p>
+<pre class="r"><code>animal &lt;- c(&quot;Cat&quot;,&quot;Ant&quot;,&quot;Dog&quot;,&quot;Cat&quot;,&quot;Dog&quot;)
+fac1 &lt;- factor(animal)
+fac1</code></pre>
+<pre><code>## [1] Cat Ant Dog Cat Dog
+## Levels: Ant Cat Dog</code></pre>
+<pre class="r"><code>class(animal)</code></pre>
+<pre><code>## [1] &quot;character&quot;</code></pre>
+<pre class="r"><code>class(fac1)</code></pre>
+<pre><code>## [1] &quot;factor&quot;</code></pre>
+<pre class="r"><code>mode(fac1)</code></pre>
+<pre><code>## [1] &quot;numeric&quot;</code></pre>
+<pre class="r"><code>str(fac1)</code></pre>
+<pre><code>##  Factor w/ 3 levels &quot;Ant&quot;,&quot;Cat&quot;,&quot;Dog&quot;: 2 1 3 2 3</code></pre>
 <p><br></p>
 </div>
 <div id="列表list" class="section level3">

@@ -424,7 +424,18 @@ x%*%x.inv
 
 
 
+```{r}
+animal <- c("Cat","Ant","Dog","Cat","Dog")
+fac1 <- factor(animal)
+fac1
+```
 
+```{r}
+class(animal)
+class(fac1)
+mode(fac1)
+str(fac1)
+```
 
 
 
