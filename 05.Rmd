@@ -1,0 +1,139 @@
+---
+title: "流程控制及自訂函數"
+author: "Nick"
+date: "2020/1/31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+# 流程控制
+
+## if-else敘述
+語法 : 
+- if(condition) expr#1 else expr#2
+- if(condition) {expr#1,...,expr#n } else {expr#1,...,expr#m}
+- if(condition) exp#1
+
+```{r}
+x<-6
+if (x>5) y <- 2 else y <- 4
+y
+
+if (x<10) y<-5
+y
+
+```
+
+
+
+
+
+
+
+## if-else if-else敘述
+
+
+
+## switch敘述
+
+
+
+# 迴圈控制
+
+### For Loop
+
+語法 : 
+
+- for (index in expr#1) expr#2
+- for (index in expr#1) {expr#2;...;expr#n}
+```{r}
+x <-0
+for (i in 1:10) x<-x+i
+x
+```
+```{r}
+x<-0
+y<-1
+for (i in 1:10) {
+  x<-x+i
+  y<-y*x
+}
+
+x
+y
+
+```
+
+### While Loop
+
+語法 : 
+- while (condition) expr#1
+- while (condition) {expr#1;...;expr#m}
+
+```{r}
+sum <-0
+i<-1
+while(i<=10){
+  sum <- sum+i;
+  i<-i+1;
+}
+
+sum
+
+```
+
+### Repeat & Break
+```{r}
+sum <-0
+i<-0
+repeat{
+  sum<-sum+1
+  i<-i+1
+  if (i>10)break
+}
+sum
+```
+
+### Next
+```{r}
+sum <-0
+
+for (i in 1:50) {
+  
+if (i %% 2 == 0) next
+    sum<-sum+1
+}
+sum
+
+```
+
+### Apply
+
+語法 : apply(x,MARGIN,FUN,...)
+- x 要執行的陣列或矩陣
+- MARGIN value 1 = 列 ; 2 = 行
+- FUN 為所欲執行的指定呵函數
+
+```{r}
+x<-array(1:24,dim = c(4,6))
+x
+```
+```{r}
+apply(x, 1, sum)
+```
+```{r}
+apply(x, 2, sum)
+```
+
+
+
+
+
+
+
+# 函數
+- 函數有以下建議的命名原則:長的函數名稱要遵循一樣的命名樣式
+- 不要用原本就存在R中的函數名稱
+- 可以被理解的名稱，通常是動詞

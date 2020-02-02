@@ -1,0 +1,158 @@
+---
+title: "變數&資料型態"
+author: "Nick"
+date: "2020/2/1"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## <B>變數</B>
+
+<br>
+
+#### <strong>物件名稱(變數)命名</strong>
+- 物件名稱(變數)第一個字母須為英文或句點(.)，若以句點為起始字元，則第二字元不可為數字 
+- 使用全小寫英文，不同單字之間以底線 _ 相隔
+- 使用英文名詞為值（Values）和資料（Data）命名、使用英文動詞為函數（Functions）命名，讓名稱簡潔且具有意義
+- 避免使用保留字與內建函數作為物件的命名
+
+<br>
+
+#### <strong>物件名稱(變數)指派</strong>
+
+- 物件名稱(變數)<-值
+- 值->物件9名稱(變數)
+- 物件名稱變數)=值
+
+```{r}
+x<-5
+10->y
+z=20
+x
+y
+z
+```
+
+<br>
+
+## <B>資料型態</B>
+
+#### <B>物件基本屬性</B>
+
+- 資料型態 (Mode / class) 
+- 長度 (Length)
+
+```{r}
+class(c(TRUE, FALSE))
+mode(c(TRUE, FALSE))
+length(c(TRUE, FALSE))
+```
+
+<br>
+
+
+
+#### <strong>基本資料型態</strong>
+- 數值(Numeric)
+- 文字(Character)
+- 複數(Complex)
+- 邏輯(Logical)
+
+<br>
+
+##### <strong>數值</strong>
+- Numeric：浮點數
+- Integer：整數
+- Complex：複數 : z=a+bi
+
+```{r}
+class(3)
+class(3L)
+class(2 + 3i)
+```
+<br>
+
+##### <B>複數(Complex) : z=a+bi </B>
+
+<br>
+```{r}
+x <- 3+5i
+x
+Re(x) #取實數
+Im(x) #取虛數
+
+is.complex(x) #判斷是否為複數
+
+y<-4
+is.complex(y) #判斷是否為複數
+
+y<-as.complex(y) # 轉化為複數
+is.complex(y)
+
+```
+
+
+
+
+```{r}
+class(5:10)
+class(sqrt(5:10))
+```
+
+<br>
+
+##### <strong>數值限制</strong>
+
+
+```{r}
+.Machine$integer.max
+
+```
+
+
+
+```{r}
+.Machine$double.xmax
+```
+
+
+```{r}
+.Machine$double.xmin
+```
+
+
+##### <strong>文字</strong>
+
+```{r}
+class(3)
+class(3L)
+class(2 + 3i)
+```
+
+<br>
+
+
+
+##### <strong>邏輯</strong>
+
+```{r}
+x<-T
+y<-F
+mode(x)
+mode(y)
+
+```
+
+<br>
+
+
+
+
+
+
+
+
+

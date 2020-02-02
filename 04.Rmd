@@ -1,0 +1,104 @@
+---
+title: "R物件資料結構"
+author: "Nick Lin"
+date: "2020/1/31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+```
+
+# 01. 向量Vector
+- 必須由相同的資料型態元素所組成
+- 建立向量 :　使用c函數 / 使用assign函數 / 使用「:」
+- 向量取值 : 變數名稱[index]，index起始值為1
+```{r}
+#使用c函數建立向量
+v1 <- c(5,7.5,10,12.5,15,25,20,17.5)
+v1
+```
+```{r}
+length(v1)
+```
+
+```{r}
+mode(v1)
+```
+
+```{r}
+#使用assign函數建立向量
+assign("v2",c(10,20,15.5,17.2,3,6,1))
+v2
+```
+```{r}
+length(v2)
+```
+
+```{r}
+mode(v2)
+```
+
+```{r}
+#使用:建立向量
+v3 = 1:10
+v3
+```
+
+```{r}
+length(v3)
+```
+
+```{r}
+mode(v3)
+```
+
+```{r}
+v3[3]
+v3[1:5]
+```
+
+
+
+# 02. 陣列Array
+
+
+# 03. 因子Factor
+
+
+
+
+
+# 04.列表LIST
+
+#### 使用data.frame()建立List
+```{r}
+StuDF <- data.frame(SID=c(1,2,3,4,5),NAME=c("魯夫","索隆","香吉士","騙人布","娜美"),SCORE=c(50,60,80,80,90))
+StuDF 
+```
+
+
+#### 顯示欄位名稱
+```{r}
+colnames(StuDF)
+```
+
+#### 使用str()函數,顯示欄位之資料型別
+```{r}
+str(StuDF) 
+```
+
+#### 使用$符號做欄位資料擷取
+```{r}
+StuDF$SID
+
+head(StuDF$SID)
+```
+
+
+
+
+
+
