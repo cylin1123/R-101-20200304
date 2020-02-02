@@ -372,6 +372,7 @@ summary {
 <div id="向量vector" class="section level3">
 <h3><B>01.向量Vector</B></h3>
 <ul>
+<li>儲存一維資料的變數類型</li>
 <li>必須由相同的資料型態元素所組成</li>
 <li>建立向量 :　使用c函數 / 使用assign函數 / 使用「:」</li>
 <li>向量取值 : 變數名稱[index]，index起始值為1</li>
@@ -548,7 +549,7 @@ x</code></pre>
 <pre><code>## [1] 11</code></pre>
 </div>
 <div id="重複向量" class="section level5">
-<h5>重複向量</h5>
+<h5><b>重複向量</b></h5>
 <pre class="r"><code>1:4</code></pre>
 <pre><code>## [1] 1 2 3 4</code></pre>
 <pre class="r"><code>1:8</code></pre>
@@ -563,12 +564,408 @@ x</code></pre>
 <h5><b>使用rep函數建立重覆向量</b></h5>
 <pre class="r"><code>rep(1:3, 5)  #rep(要重複向量,重複次數)</code></pre>
 <pre><code>##  [1] 1 2 3 1 2 3 1 2 3 1 2 3 1 2 3</code></pre>
+<pre class="r"><code>rep(1:5, each = 2) #使用 each 參數讓每一個元素個別重複之後再串接起來</code></pre>
+<pre><code>##  [1] 1 1 2 2 3 3 4 4 5 5</code></pre>
+<pre class="r"><code>rep(1:5, 5:1) #透過向量的方式指定重複次數，讓每一個元素重複不同的次數</code></pre>
+<pre><code>##  [1] 1 1 1 1 1 2 2 2 2 3 3 3 4 4 5</code></pre>
+<pre class="r"><code>rep(1:5, length.out = 8) #直接指定輸出的向量長度，讓 rep 自動計算重複的次數</code></pre>
+<pre><code>## [1] 1 2 3 4 5 1 2 3</code></pre>
+<pre class="r"><code>rep_len(1:5, 8) #另一個高執行效率的版本</code></pre>
+<pre><code>## [1] 1 2 3 4 5 1 2 3</code></pre>
 </div>
 </div>
 </div>
-<div id="陣列array" class="section level3">
-<h3><B> 02. 陣列Array</B></h3>
+<div id="矩陣matrix-陣列array" class="section level3">
+<h3><B> 02. 矩陣Matrix &amp; 陣列Array</B></h3>
+<div id="使用-matrix-函數建立二維度陣列" class="section level5">
+<h5><b>使用 matrix 函數建立二維度陣列</b></h5>
+<pre class="r"><code>matrix(1:8, nrow = 2, ncol = 4) #建立2 x 4 的矩陣</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8</code></pre>
+<pre class="r"><code>matrix(1:8, nrow = 2, ncol = 4, byrow = TRUE) #byrow 參數可以調整資料排列的方向</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8</code></pre>
+<pre class="r"><code>matrix(1:8, nrow = 2, ncol = 4,dimnames = list(c(&quot;row1&quot;, &quot;row2&quot;),  c(&quot;Col1&quot;, &quot;Col2&quot;, &quot;Col3&quot;, &quot;col4&quot;))) #使用 dimnames 參數指定行列名稱</code></pre>
+<pre><code>##      Col1 Col2 Col3 col4
+## row1    1    3    5    7
+## row2    2    4    6    8</code></pre>
+</div>
+<div id="使用-array-函數來建立多維度陣列" class="section level5">
+<h5><b>使用 array 函數來建立多維度陣列</b></h5>
+<pre class="r"><code>array(1:24, dim = c(2, 3, 4))</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3]
+## [1,]    1    3    5
+## [2,]    2    4    6
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3]
+## [1,]    7    9   11
+## [2,]    8   10   12
+## 
+## , , 3
+## 
+##      [,1] [,2] [,3]
+## [1,]   13   15   17
+## [2,]   14   16   18
+## 
+## , , 4
+## 
+##      [,1] [,2] [,3]
+## [1,]   19   21   23
+## [2,]   20   22   24</code></pre>
+<pre class="r"><code>x&lt;-array(1:24, dim = c(2, 3, 4), dimnames = list(X = c(&quot;A1&quot;,&quot;A2&quot;), Y = c(&quot;B1&quot;, &quot;B2&quot;, &quot;B3&quot;), Z = c(&quot;C1&quot;, &quot;C2&quot;,&quot;c3&quot;,&quot;c4&quot;)))  #使用 dimnames 參數指定行列名稱
+x</code></pre>
+<pre><code>## , , Z = C1
+## 
+##     Y
+## X    B1 B2 B3
+##   A1  1  3  5
+##   A2  2  4  6
+## 
+## , , Z = C2
+## 
+##     Y
+## X    B1 B2 B3
+##   A1  7  9 11
+##   A2  8 10 12
+## 
+## , , Z = c3
+## 
+##     Y
+## X    B1 B2 B3
+##   A1 13 15 17
+##   A2 14 16 18
+## 
+## , , Z = c4
+## 
+##     Y
+## X    B1 B2 B3
+##   A1 19 21 23
+##   A2 20 22 24</code></pre>
+</div>
+<div id="使用-rownamescolnames-與-dimnames-函數來取得行列與維度的名稱" class="section level5">
+<h5><b>使用 rownames、colnames 與 dimnames 函數來取得行、列與維度的名稱</b></h5>
+<pre class="r"><code>rownames(x)</code></pre>
+<pre><code>## [1] &quot;A1&quot; &quot;A2&quot;</code></pre>
+<pre class="r"><code>colnames(x)</code></pre>
+<pre><code>## [1] &quot;B1&quot; &quot;B2&quot; &quot;B3&quot;</code></pre>
+<pre class="r"><code>dimnames(x)</code></pre>
+<pre><code>## $X
+## [1] &quot;A1&quot; &quot;A2&quot;
+## 
+## $Y
+## [1] &quot;B1&quot; &quot;B2&quot; &quot;B3&quot;
+## 
+## $Z
+## [1] &quot;C1&quot; &quot;C2&quot; &quot;c3&quot; &quot;c4&quot;</code></pre>
+</div>
+<div id="使用nrow-與-ncol-函數檢查陣列的列數與行數" class="section level5">
+<h5><b>使用nrow 與 ncol 函數檢查陣列的列數與行數</b></h5>
+<pre class="r"><code>x.matrix &lt;- array(1:8, dim = c(2, 4))
+x.matrix</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8</code></pre>
+<pre class="r"><code>nrow(x.matrix)</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>ncol(x.matrix)</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>x.array &lt;- array(1:36, dim = c(3, 4, 3))
+x.array</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   13   16   19   22
+## [2,]   14   17   20   23
+## [3,]   15   18   21   24
+## 
+## , , 3
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   25   28   31   34
+## [2,]   26   29   32   35
+## [3,]   27   30   33   36</code></pre>
+<pre class="r"><code>nrow(x.array)</code></pre>
+<pre><code>## [1] 3</code></pre>
+<pre class="r"><code>ncol(x.array)</code></pre>
+<pre><code>## [1] 4</code></pre>
+</div>
+<div id="使用length-函數計算陣列中所有元素的個數" class="section level5">
+<h5><b>使用length 函數計算陣列中所有元素的個數</b></h5>
+<pre class="r"><code>length(x.matrix)</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>length(x.array)</code></pre>
+<pre><code>## [1] 36</code></pre>
+</div>
+<div id="使用-dim-改變陣列的維度" class="section level5">
+<h5><b>使用 dim 改變陣列的維度</b></h5>
+<pre class="r"><code>x &lt;- matrix(1:12, nrow = 2, ncol = 6)
+x</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
+## [1,]    1    3    5    7    9   11
+## [2,]    2    4    6    8   10   12</code></pre>
+<pre class="r"><code>dim(x) &lt;- c(3, 4)
+x</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12</code></pre>
+<pre class="r"><code>dim(x) &lt;- c(2,2,3) #轉換為多維度的陣列
+x</code></pre>
+<pre><code>## , , 1
+## 
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4
+## 
+## , , 2
+## 
+##      [,1] [,2]
+## [1,]    5    7
+## [2,]    6    8
+## 
+## , , 3
+## 
+##      [,1] [,2]
+## [1,]    9   11
+## [2,]   10   12</code></pre>
+</div>
+<div id="陣列索引" class="section level5">
+<h5><b>陣列索引</b></h5>
+<pre class="r"><code>x[2,1,2] #[row,col,dim]</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>dimnames(x) &lt;- list(c(&quot;R1&quot;,&quot;R2&quot;),c(&quot;C1&quot;,&quot;C2&quot;),c(&quot;D1&quot;,&quot;D2&quot;,&quot;D3&quot;))
+x</code></pre>
+<pre><code>## , , D1
+## 
+##    C1 C2
+## R1  1  3
+## R2  2  4
+## 
+## , , D2
+## 
+##    C1 C2
+## R1  5  7
+## R2  6  8
+## 
+## , , D3
+## 
+##    C1 C2
+## R1  9 11
+## R2 10 12</code></pre>
+<pre class="r"><code>x[1, c(&quot;C1&quot;, &quot;C2&quot;), &quot;D2&quot;]</code></pre>
+<pre><code>## C1 C2 
+##  5  7</code></pre>
+<pre class="r"><code>x[c(&quot;R1&quot;, &quot;R2&quot;),1, &quot;D3&quot;]</code></pre>
+<pre><code>## R1 R2 
+##  9 10</code></pre>
+<pre class="r"><code>x[c(&quot;R1&quot;, &quot;R2&quot;),1,]</code></pre>
+<pre><code>##    D1 D2 D3
+## R1  1  5  9
+## R2  2  6 10</code></pre>
+</div>
+<div id="合併矩陣" class="section level5">
+<h5><b>合併矩陣</b></h5>
+<pre class="r"><code>x.matrix1 &lt;- matrix(1:6, nrow = 3, ncol = 2)
+x.matrix1</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6</code></pre>
+<pre class="r"><code>x.matrix2 &lt;- matrix(11:16, nrow = 3, ncol = 2)
+x.matrix2</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   11   14
+## [2,]   12   15
+## [3,]   13   16</code></pre>
+<pre class="r"><code>c(x.matrix1, x.matrix2)</code></pre>
+<pre><code>##  [1]  1  2  3  4  5  6 11 12 13 14 15 16</code></pre>
+<pre class="r"><code>cbind(x.matrix1, x.matrix2)</code></pre>
+<pre><code>##      [,1] [,2] [,3] [,4]
+## [1,]    1    4   11   14
+## [2,]    2    5   12   15
+## [3,]    3    6   13   16</code></pre>
+<pre class="r"><code>rbind(x.matrix1, x.matrix2)</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+## [4,]   11   14
+## [5,]   12   15
+## [6,]   13   16</code></pre>
+</div>
+<div id="陣列的運算" class="section level5">
+<h5><b>陣列的運算</b></h5>
+<pre class="r"><code>x.matrix1 &lt;- matrix(1:6, nrow = 3, ncol = 2)
+x.matrix1</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6</code></pre>
+<pre class="r"><code>x.matrix2 &lt;- matrix(11:16, nrow = 3, ncol = 2)
+x.matrix2</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   11   14
+## [2,]   12   15
+## [3,]   13   16</code></pre>
+</div>
+<div id="陣列相加" class="section level5">
+<h5>陣列相加</h5>
+<pre class="r"><code>x.matrix1 + x.matrix2</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   12   18
+## [2,]   14   20
+## [3,]   16   22</code></pre>
+</div>
+<div id="陣列相減" class="section level5">
+<h5>陣列相減</h5>
+<p>x.matrix1 x.matrix2</p>
+<pre class="r"><code>x.matrix1 - x.matrix2</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]  -10  -10
+## [2,]  -10  -10
+## [3,]  -10  -10</code></pre>
+</div>
+<div id="陣列相乘" class="section level5">
+<h5>陣列相乘</h5>
+<pre class="r"><code>x.matrix1 * x.matrix2</code></pre>
+<pre><code>##      [,1] [,2]
+## [1,]   11   56
+## [2,]   24   75
+## [3,]   39   96</code></pre>
+</div>
+<div id="陣列相除" class="section level5">
+<h5>陣列相除</h5>
+<pre class="r"><code>x.matrix1 / x.matrix2</code></pre>
+<pre><code>##            [,1]      [,2]
+## [1,] 0.09090909 0.2857143
+## [2,] 0.16666667 0.3333333
+## [3,] 0.23076923 0.3750000</code></pre>
+</div>
+<div id="矩陣內積" class="section level5">
+<h5>矩陣內積</h5>
+<pre class="r"><code>x.matrix1 %*% t(x.matrix1)</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]   17   22   27
+## [2,]   22   29   36
+## [3,]   27   36   45</code></pre>
+</div>
+<div id="矩陣外積" class="section level5">
+<h5>矩陣外積</h5>
+<pre class="r"><code>x.matrix1 %o% t(x.matrix1)</code></pre>
+<pre><code>## , , 1, 1
+## 
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+## 
+## , , 2, 1
+## 
+##      [,1] [,2]
+## [1,]    4   16
+## [2,]    8   20
+## [3,]   12   24
+## 
+## , , 1, 2
+## 
+##      [,1] [,2]
+## [1,]    2    8
+## [2,]    4   10
+## [3,]    6   12
+## 
+## , , 2, 2
+## 
+##      [,1] [,2]
+## [1,]    5   20
+## [2,]   10   25
+## [3,]   15   30
+## 
+## , , 1, 3
+## 
+##      [,1] [,2]
+## [1,]    3   12
+## [2,]    6   15
+## [3,]    9   18
+## 
+## , , 2, 3
+## 
+##      [,1] [,2]
+## [1,]    6   24
+## [2,]   12   30
+## [3,]   18   36</code></pre>
+<pre class="r"><code>outer(x.matrix1,t(x.matrix1) )</code></pre>
+<pre><code>## , , 1, 1
+## 
+##      [,1] [,2]
+## [1,]    1    4
+## [2,]    2    5
+## [3,]    3    6
+## 
+## , , 2, 1
+## 
+##      [,1] [,2]
+## [1,]    4   16
+## [2,]    8   20
+## [3,]   12   24
+## 
+## , , 1, 2
+## 
+##      [,1] [,2]
+## [1,]    2    8
+## [2,]    4   10
+## [3,]    6   12
+## 
+## , , 2, 2
+## 
+##      [,1] [,2]
+## [1,]    5   20
+## [2,]   10   25
+## [3,]   15   30
+## 
+## , , 1, 3
+## 
+##      [,1] [,2]
+## [1,]    3   12
+## [2,]    6   15
+## [3,]    9   18
+## 
+## , , 2, 3
+## 
+##      [,1] [,2]
+## [1,]    6   24
+## [2,]   12   30
+## [3,]   18   36</code></pre>
+</div>
+<div id="使用-solve-函數來計算反矩陣" class="section level5">
+<h5><B>使用 solve 函數來計算反矩陣</B></h5>
+<pre class="r"><code>x &lt;- matrix(c(1, 0, 1, 5, -3, 1, 2, 4, 7), nrow = 3)
+
+x.inv &lt;- solve(x)
+x.inv</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]  -25  -33   26
+## [2,]    4    5   -4
+## [3,]    3    4   -3</code></pre>
+<pre class="r"><code>x%*%x.inv</code></pre>
+<pre><code>##      [,1] [,2] [,3]
+## [1,]    1    0    0
+## [2,]    0    1    0
+## [3,]    0    0    1</code></pre>
 <p><br></p>
+</div>
 </div>
 <div id="因子factor" class="section level3">
 <h3><B> 03. 因子Factor</B></h3>

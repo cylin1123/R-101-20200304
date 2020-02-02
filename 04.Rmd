@@ -14,6 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### <B>01.向量Vector</B>
+- 儲存一維資料的變數類型
 - 必須由相同的資料型態元素所組成
 - 建立向量 :　使用c函數 / 使用assign函數 / 使用「:」
 - 向量取值 : 變數名稱[index]，index起始值為1
@@ -210,7 +211,7 @@ which.min(x)
 which.max(x)
 ```
 
-##### 重複向量
+##### <b>重複向量</b>
 
 ```{r}
 1:4
@@ -236,15 +237,193 @@ rep_len(1:5, 8) #另一個高執行效率的版本
 ```
 
 
+### <B> 02. 矩陣Matrix  & 陣列Array</B>
+
+##### <b>使用 matrix 函數建立二維度陣列</b>
+
+```{r}
+matrix(1:8, nrow = 2, ncol = 4) #建立2 x 4 的矩陣
+
+matrix(1:8, nrow = 2, ncol = 4, byrow = TRUE) #byrow 參數可以調整資料排列的方向
+```
+
+
+```{r}
+matrix(1:8, nrow = 2, ncol = 4,dimnames = list(c("row1", "row2"),  c("Col1", "Col2", "Col3", "col4"))) #使用 dimnames 參數指定行列名稱
+```
+
+##### <b>使用 array 函數來建立多維度陣列</b>
+
+```{r}
+array(1:24, dim = c(2, 3, 4))
+```
+
+```{r}
+x<-array(1:24, dim = c(2, 3, 4), dimnames = list(X = c("A1","A2"), Y = c("B1", "B2", "B3"), Z = c("C1", "C2","c3","c4")))  #使用 dimnames 參數指定行列名稱
+x
+```
+
+
+##### <b>使用 rownames、colnames 與 dimnames 函數來取得行、列與維度的名稱</b>
+
+```{r}
+rownames(x)
+colnames(x)
+dimnames(x)
+```
+
+##### <b>使用nrow 與 ncol 函數檢查陣列的列數與行數</b>
+```{r}
+
+x.matrix <- array(1:8, dim = c(2, 4))
+x.matrix
+nrow(x.matrix)
+ncol(x.matrix)
+
+x.array <- array(1:36, dim = c(3, 4, 3))
+x.array
+nrow(x.array)
+ncol(x.array)
+```
+
+##### <b>使用length 函數計算陣列中所有元素的個數</b>
+
+```{r}
+length(x.matrix)
+length(x.array)
+```
+
+##### <b>使用 dim 改變陣列的維度</b>
+
+```{r}
+x <- matrix(1:12, nrow = 2, ncol = 6)
+x
+
+dim(x) <- c(3, 4)
+x
+
+dim(x) <- c(2,2,3) #轉換為多維度的陣列
+x
+```
+
+##### <b>陣列索引</b>
+
+```{r}
+x[2,1,2] #[row,col,dim]
+```
+
+```{r}
+
+dimnames(x) <- list(c("R1","R2"),c("C1","C2"),c("D1","D2","D3"))
+x
+```
+
+```{r}
+x[1, c("C1", "C2"), "D2"]
+
+x[c("R1", "R2"),1, "D3"]
+
+x[c("R1", "R2"),1,]
+
+```
+
+##### <b>合併矩陣</b>
 
 
 
-### <B> 02. 陣列Array</B>
+
+```{r}
+x.matrix1 <- matrix(1:6, nrow = 3, ncol = 2)
+x.matrix1
+x.matrix2 <- matrix(11:16, nrow = 3, ncol = 2)
+x.matrix2
+```
+
+
+```{r}
+c(x.matrix1, x.matrix2)
+```
+
+```{r}
+cbind(x.matrix1, x.matrix2)
+```
+```{r}
+rbind(x.matrix1, x.matrix2)
+```
+
+##### <b>陣列的運算</b>
+
+```{r}
+x.matrix1 <- matrix(1:6, nrow = 3, ncol = 2)
+x.matrix1
+x.matrix2 <- matrix(11:16, nrow = 3, ncol = 2)
+x.matrix2
+```
+
+##### 陣列相加
+
+
+```{r}
+x.matrix1 + x.matrix2
+```
+
+
+##### 陣列相減
+
+x.matrix1
+x.matrix2
+
+```{r}
+x.matrix1 - x.matrix2
+```
+
+
+##### 陣列相乘
+
+```{r}
+x.matrix1 * x.matrix2
+```
+
+##### 陣列相除
+
+```{r}
+x.matrix1 / x.matrix2
+```
+
+##### 矩陣內積
+
+```{r}
+x.matrix1 %*% t(x.matrix1)
+```
+
+##### 矩陣外積
+```{r}
+x.matrix1 %o% t(x.matrix1)
+
+outer(x.matrix1,t(x.matrix1) )
+```
+
+##### <B>使用 solve 函數來計算反矩陣</B>
+```{r}
+x <- matrix(c(1, 0, 1, 5, -3, 1, 2, 4, 7), nrow = 3)
+
+x.inv <- solve(x)
+x.inv
+```
+
+```{r}
+x%*%x.inv
+```
 
 
 <br>
 
 ### <B> 03. 因子Factor</B>
+
+因子用來表示類別資料，亦稱"類別變數"
+
+
+
 
 
 
