@@ -11,22 +11,52 @@ knitr::opts_chunk$set(echo = TRUE)
 # 流程控制
 
 ## if-else敘述
-語法 : 
-- if(condition) expr#1 else expr#2
-- if(condition) {expr#1,...,expr#n } else {expr#1,...,expr#m}
-- if(condition) exp#1
+語法 :  if(condition) expr#1 else expr#2
 
 ```{r}
 x<-6
 if (x>5) y <- 2 else y <- 4
 y
 
-if (x<10) y<-5
+```
+
+語法 : if(condition) {expr#1,...,expr#n } else {expr#1,...,expr#m}
+
+```{r}
+x<-6
+y<-1
+c<-0
+
+if (x>5 && y <3){
+    x<-x-1;
+    y<-y+1;
+    c<-3
+}
+
+x
 y
+c
 
 ```
 
 
+語法 : if(condition) exp#1
+
+```{r}
+x<-6
+if (x<10) y<-5
+y
+```
+
+語法 : ifelse(condition,a,b)
+
+```{r}
+
+x<-6
+y = ifelse (x<10,5,10) 
+y
+
+```
 
 
 
@@ -36,13 +66,38 @@ y
 
 
 
-## switch敘述
+### <b> switch敘述</b>
+
+語法 : switch(condition,expr#1,expr#2,...,expr#n)
+
+```{r}
+x<-1
+switch(x,3,sum(1:5),sum(1:10))
+x<-2
+switch(x,3,sum(1:5),sum(1:10))
+x<-3
+switch(x,3,sum(1:5),sum(1:10))
+x<-4
+switch(x,3,sum(1:5),sum(1:10)) # 無回傳值
 
 
+```
 
-# 迴圈控制
 
-### For Loop
+```{r}
+
+y<-"meat"
+
+switch(y,juice ="apple",meat="beef")
+
+```
+
+
+<br>
+
+## <b>迴圈控制</b>
+
+### <b>For Loop</b>
 
 語法 : 
 
@@ -66,7 +121,7 @@ y
 
 ```
 
-### While Loop
+### <b>While Loop</b>
 
 語法 : 
 - while (condition) expr#1
@@ -84,7 +139,7 @@ sum
 
 ```
 
-### Repeat & Break
+### <b>Repeat & Break</b>
 ```{r}
 sum <-0
 i<-0
@@ -96,7 +151,7 @@ repeat{
 sum
 ```
 
-### Next
+### <b>Next</b>
 ```{r}
 sum <-0
 
@@ -109,7 +164,7 @@ sum
 
 ```
 
-### Apply
+### <b>Apply</b>
 
 語法 : apply(x,MARGIN,FUN,...)
 - x 要執行的陣列或矩陣
@@ -133,7 +188,7 @@ apply(x, 2, sum)
 
 
 
-# 函數
+## 函數
 - 函數有以下建議的命名原則:長的函數名稱要遵循一樣的命名樣式
 - 不要用原本就存在R中的函數名稱
 - 可以被理解的名稱，通常是動詞

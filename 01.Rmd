@@ -1,0 +1,36 @@
+---
+title: "R 語言 & 開發工具 R Studio 介紹"
+author: "Nick"
+date: "2020/2/2"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+<br>
+
+### <b>R</b>
+
+- R語言，一種自由軟體程式語言與操作環境，主要用於統計分析、繪圖、資料探勘。
+- R的語法是來自Scheme
+- 可在多種平台下執行:UNIX、Linux、Windows、MacOS
+
+
+(From : 維基百科)
+
+<br>
+
+### <b>CRAN</b>
+
+Comprehensive R Archive Network（R綜合典藏網）的簡稱。它除了收藏了R的執行檔下載版、原始碼和說明文件，也收錄了各種用戶撰寫的軟體包
+
+
+<br>
+
+### <b> R Studio</b>
+
+- R Studio  <https://rstudio.com/>
+
+
