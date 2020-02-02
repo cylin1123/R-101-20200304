@@ -570,6 +570,41 @@ b &lt;- c(1,2,3,2,2)
 
 b^a</code></pre>
 <pre><code>## [1]   1   4  27 256  16</code></pre>
+</div>
+<div id="常見數學運算" class="section level4">
+<h4><b> 常見數學運算 </b></h4>
+<pre class="r"><code>x&lt;-2
+
+x^2  # x 平方計算</code></pre>
+<pre><code>## [1] 4</code></pre>
+<pre class="r"><code>x^3  # x 次方計算</code></pre>
+<pre><code>## [1] 8</code></pre>
+<pre class="r"><code>sqrt(x^2) # 開根號</code></pre>
+<pre><code>## [1] 2</code></pre>
+<pre class="r"><code>log(x) # 取log</code></pre>
+<pre><code>## [1] 0.6931472</code></pre>
+<pre class="r"><code>#四捨五入
+x&lt;- 0.5 + -5:5
+x</code></pre>
+<pre><code>##  [1] -4.5 -3.5 -2.5 -1.5 -0.5  0.5  1.5  2.5  3.5  4.5  5.5</code></pre>
+<pre class="r"><code>round(x)</code></pre>
+<pre><code>##  [1] -4 -4 -2 -2  0  0  2  2  4  4  6</code></pre>
+<pre class="r"><code>round(6.0169, digit = 2)</code></pre>
+<pre><code>## [1] 6.02</code></pre>
+<pre class="r"><code># 取下限
+floor(123.25)</code></pre>
+<pre><code>## [1] 123</code></pre>
+<pre class="r"><code>floor(123.999)</code></pre>
+<pre><code>## [1] 123</code></pre>
+<pre class="r"><code>floor(-123.999)</code></pre>
+<pre><code>## [1] -124</code></pre>
+<pre class="r"><code># 取上限
+ceiling(123.25)</code></pre>
+<pre><code>## [1] 124</code></pre>
+<pre class="r"><code>ceiling(123.999)</code></pre>
+<pre><code>## [1] 124</code></pre>
+<pre class="r"><code>ceiling(-123.999)</code></pre>
+<pre><code>## [1] -123</code></pre>
 <p><br></p>
 </div>
 <div id="其他運算子-in" class="section level4">
