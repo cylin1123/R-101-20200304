@@ -1049,6 +1049,44 @@ x_dataframe</code></pre>
 </div>
 <div id="列表list" class="section level3">
 <h3><B> 05.列表LIST</B></h3>
+<p>列表包含不同類型的元素，例如 - 數字，字符串，向量和另一個列表等。一個列表還可以包含一個矩陣或一個函數作為它的元素</p>
+<pre class="r"><code>list_data &lt;- list(&quot;Ant&quot;,  c(10,20,30), TRUE, 160, 50)
+list_data</code></pre>
+<pre><code>## [[1]]
+## [1] &quot;Ant&quot;
+## 
+## [[2]]
+## [1] 10 20 30
+## 
+## [[3]]
+## [1] TRUE
+## 
+## [[4]]
+## [1] 160
+## 
+## [[5]]
+## [1] 50</code></pre>
+<p>命名列表元素</p>
+<pre class="r"><code>names(list_data) &lt;- c(&quot;Name&quot;, &quot;Score&quot;, &quot;Maried&quot;, &quot;Height&quot;,&quot;Weight&quot;)
+list_data</code></pre>
+<pre><code>## $Name
+## [1] &quot;Ant&quot;
+## 
+## $Score
+## [1] 10 20 30
+## 
+## $Maried
+## [1] TRUE
+## 
+## $Height
+## [1] 160
+## 
+## $Weight
+## [1] 50</code></pre>
+<pre class="r"><code>list_data$Name</code></pre>
+<pre><code>## [1] &quot;Ant&quot;</code></pre>
+<pre class="r"><code>list_data$Score</code></pre>
+<pre><code>## [1] 10 20 30</code></pre>
 <p><br></p>
 <div id="使用data.frame建立list" class="section level4">
 <h4>使用data.frame()建立List</h4>
