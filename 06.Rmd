@@ -9,13 +9,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# 資料讀取
+## <b> CSV資料讀取</b>
 
 ```{r}
-#x<-read.csv("A.csv",header=TRUE,encoding="Big5")
-#x
+x<-read.csv("customer.csv",header=TRUE,encoding="Big5")
+x
 ```
 
+```{r}
+x[ x$region == 2, c("region","age")]
+```
 
 
 
@@ -47,7 +50,7 @@ library(XML)
 
 wq<-xmlParse(file = "doswTaipei.xml")
 
-wq
+#wq
 
 ```
 

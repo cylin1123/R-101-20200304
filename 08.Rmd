@@ -1,6 +1,6 @@
 ---
 title: "資料視覺化"
-author: "Nick"
+author: ""
 date: "2020/1/31"
 output: html_document
 ---
@@ -18,15 +18,15 @@ head(airquality)
 
 ```{r}
 hist(x=airquality$Month, 
-     main="Histogram of Month",         # 圖片的名稱
-     xlab="Month",                      # X軸的名稱
-     ylab="Frequency")  
+     main="月份長條圖",         # 圖片的名稱
+     xlab="月份",                      # X軸的名稱
+     ylab="頻率")  
 ```
 
 ```{r}
 boxplot(formula = Ozone ~ Month, # Y ~ X (代表X和Y軸要放的數值) 
         data = airquality,       # 資料
-        xlab = "Month",          # X軸名稱
+        xlab = "月",          # X軸名稱
         ylab = "Ozone (ppb)",    # Y軸名稱
         col ="gray")             # 顏色
 ```
@@ -35,8 +35,8 @@ boxplot(formula = Ozone ~ Month, # Y ~ X (代表X和Y軸要放的數值)
 ```{r}
 plot(x=airquality$Month,            # X軸的值
      y=airquality$Temp,             # Y軸的值
-     main="Month to Temperature",   # 圖片名稱
-     xlab="Month(1~12)",            # X軸名稱
+     main="月氣溫",   # 圖片名稱
+     xlab="月(1~12)",            # X軸名稱
      ylab="Temperature(degrees F)") # Y軸名稱 
 
 
@@ -47,7 +47,7 @@ plot(x=airquality$Month,            # X軸的值
 plot(x=airquality$Ozone,      # X軸的值
      y=airquality$Wind,       # Y軸的值
      main="Ozone to Wind",    # 圖片名稱
-     xlab="Ozone(ppb)",       # X軸的名稱
+     xlab="臭氧 / Ozone(ppb)",       # X軸的名稱
      ylab="Wind(mph)"         # Y軸的名稱
 )
 
