@@ -175,25 +175,6 @@ sum
 
 ```
 
-### <b>Apply</b>
-
-語法 : apply(x,MARGIN,FUN,...)
-- x 要執行的陣列或矩陣
-- MARGIN value 1 = 列 ; 2 = 行
-- FUN 為所欲執行的指定函數
-
-```{r}
-x<-array(1:24,dim = c(4,6))
-x
-```
-```{r}
-apply(x, 1, sum)
-```
-```{r}
-apply(x, 2, sum)
-```
-
-
 
 
 
@@ -201,25 +182,42 @@ apply(x, 2, sum)
 
 ```{r}
 
-custom_squared <- function(x) {
-  squared_x <- x**2
-  return(squared_x)
+calculate_squared <- function(x) {
+  
+  x_squared <- x**2
+  
+  
+  return(x_squared)
 }
 
-custom_squared(-3)
-custom_squared(-3:3)
+
+calculate_squared(5)
+
+#a = calculate_squared(5)
+#a
+
+calculate_squared(1:10)
+
+#b = calculate_squared(1:10)
+#b
 
 
 ```
 
 ```{r}
+
 get_bmi <- function(height, weight) {
+  
   height <- height/100
+  
   bmi <- weight / height**2
+  
   return(bmi)
 }
-get_bmi(216, 147)
-get_bmi(c(216, 198), c(147, 98))
+
+get_bmi(173, 72)
+
+get_bmi(c(180, 75), c(158, 50))
 
 ```
 
@@ -228,18 +226,22 @@ get_bmi(c(216, 198), c(147, 98))
 
 ```{r}
 
-circle_calculator <- function(r, is_area = TRUE) {
-  # R 語言有內建圓周率 pi
-  area <- pi * r**2
+circle_calculator <- function(r = 2, is_area = TRUE) {
+  
+  area <- pi * r**2  # R 內建圓周率 pi
+  
   perimeter <- 2 * pi * r
+  
   if (is_area) {
     return(area)
-  } else {
-    return(perimeter)
+  
+    } else {
+    
+      return(perimeter)
   }
 }
-circle_calculator(3) # 預設回傳圓形面積
-circle_calculator(3, is_area = FALSE) # 回傳圓形周長
+circle_calculator(,) # 預設回傳圓形面積
+circle_calculator(3, FALSE) # 回傳圓形周長
 
 ```
 
@@ -251,9 +253,9 @@ bmi_calculator <- function(height, weight) {
   height <- height/100
   bmi <- weight / height**2
   if (bmi < 18.5) {
-    bmi_label <- "過輕"
+    bmi_label <- "輕"
   } else if (bmi > 30) {
-    bmi_label <- "肥胖"
+    bmi_label <- "胖"
   } else if (bmi >= 18.5 & bmi < 25) {
     bmi_label <- "正常"
   } else {
@@ -261,13 +263,14 @@ bmi_calculator <- function(height, weight) {
   }
   bmi_list <- list(
     bmi = bmi,
-    bmiLabel = bmi_label
+    label = bmi_label
   )
   return(bmi_list)
 }
-shaq <- bmi_calculator(216, 147)
+shaq <- bmi_calculator(173, 70)
 shaq$bmi
-shaq$bmiLabel
+shaq$label
+
 ```
 
 
@@ -287,7 +290,7 @@ custom_as_numeric <- function(x) {
     return(as.numeric(x))
   },
   warning = function(w) {
-    return("請不要輸入文字向量。")
+    return("請勿輸入文字向量。")
   })
 }
 custom_as_numeric(TRUE)

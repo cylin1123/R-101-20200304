@@ -502,64 +502,66 @@ if (i %% 2 == 0) next
 sum</code></pre>
 <pre><code>## [1] 25</code></pre>
 </div>
-<div id="apply" class="section level3">
-<h3><b>Apply</b></h3>
-<p>語法 : apply(x,MARGIN,FUN,…) - x 要執行的陣列或矩陣 - MARGIN value 1 = 列 ; 2 = 行 - FUN 為所欲執行的指定函數</p>
-<pre class="r"><code>x&lt;-array(1:24,dim = c(4,6))
-x</code></pre>
-<pre><code>##      [,1] [,2] [,3] [,4] [,5] [,6]
-## [1,]    1    5    9   13   17   21
-## [2,]    2    6   10   14   18   22
-## [3,]    3    7   11   15   19   23
-## [4,]    4    8   12   16   20   24</code></pre>
-<pre class="r"><code>apply(x, 1, sum)</code></pre>
-<pre><code>## [1] 66 72 78 84</code></pre>
-<pre class="r"><code>apply(x, 2, sum)</code></pre>
-<pre><code>## [1] 10 26 42 58 74 90</code></pre>
-</div>
 </div>
 </div>
 <div id="自訂函數" class="section level1">
 <h1>自訂函數</h1>
-<pre class="r"><code>custom_squared &lt;- function(x) {
-  squared_x &lt;- x**2
-  return(squared_x)
+<pre class="r"><code>calculate_squared &lt;- function(x) {
+  
+  x_squared &lt;- x**2
+  
+  
+  return(x_squared)
 }
 
-custom_squared(-3)</code></pre>
-<pre><code>## [1] 9</code></pre>
-<pre class="r"><code>custom_squared(-3:3)</code></pre>
-<pre><code>## [1] 9 4 1 0 1 4 9</code></pre>
+
+calculate_squared(5)</code></pre>
+<pre><code>## [1] 25</code></pre>
+<pre class="r"><code>#a = calculate_squared(5)
+#a
+
+calculate_squared(1:10)</code></pre>
+<pre><code>##  [1]   1   4   9  16  25  36  49  64  81 100</code></pre>
+<pre class="r"><code>#b = calculate_squared(1:10)
+#b</code></pre>
 <pre class="r"><code>get_bmi &lt;- function(height, weight) {
+  
   height &lt;- height/100
+  
   bmi &lt;- weight / height**2
+  
   return(bmi)
 }
-get_bmi(216, 147)</code></pre>
-<pre><code>## [1] 31.5072</code></pre>
-<pre class="r"><code>get_bmi(c(216, 198), c(147, 98))</code></pre>
-<pre><code>## [1] 31.50720 24.99745</code></pre>
-<pre class="r"><code>circle_calculator &lt;- function(r, is_area = TRUE) {
-  # R 語言有內建圓周率 pi
-  area &lt;- pi * r**2
+
+get_bmi(173, 72)</code></pre>
+<pre><code>## [1] 24.05693</code></pre>
+<pre class="r"><code>get_bmi(c(180, 75), c(158, 50))</code></pre>
+<pre><code>## [1] 48.76543 88.88889</code></pre>
+<pre class="r"><code>circle_calculator &lt;- function(r = 2, is_area = TRUE) {
+  
+  area &lt;- pi * r**2  # R 內建圓周率 pi
+  
   perimeter &lt;- 2 * pi * r
+  
   if (is_area) {
     return(area)
-  } else {
-    return(perimeter)
+  
+    } else {
+    
+      return(perimeter)
   }
 }
-circle_calculator(3) # 預設回傳圓形面積</code></pre>
-<pre><code>## [1] 28.27433</code></pre>
-<pre class="r"><code>circle_calculator(3, is_area = FALSE) # 回傳圓形周長</code></pre>
+circle_calculator(,) # 預設回傳圓形面積</code></pre>
+<pre><code>## [1] 12.56637</code></pre>
+<pre class="r"><code>circle_calculator(3, FALSE) # 回傳圓形周長</code></pre>
 <pre><code>## [1] 18.84956</code></pre>
 <pre class="r"><code>bmi_calculator &lt;- function(height, weight) {
   height &lt;- height/100
   bmi &lt;- weight / height**2
   if (bmi &lt; 18.5) {
-    bmi_label &lt;- &quot;過輕&quot;
+    bmi_label &lt;- &quot;輕&quot;
   } else if (bmi &gt; 30) {
-    bmi_label &lt;- &quot;肥胖&quot;
+    bmi_label &lt;- &quot;胖&quot;
   } else if (bmi &gt;= 18.5 &amp; bmi &lt; 25) {
     bmi_label &lt;- &quot;正常&quot;
   } else {
@@ -567,15 +569,15 @@ circle_calculator(3) # 預設回傳圓形面積</code></pre>
   }
   bmi_list &lt;- list(
     bmi = bmi,
-    bmiLabel = bmi_label
+    label = bmi_label
   )
   return(bmi_list)
 }
-shaq &lt;- bmi_calculator(216, 147)
+shaq &lt;- bmi_calculator(173, 70)
 shaq$bmi</code></pre>
-<pre><code>## [1] 31.5072</code></pre>
-<pre class="r"><code>shaq$bmiLabel</code></pre>
-<pre><code>## [1] &quot;肥胖&quot;</code></pre>
+<pre><code>## [1] 23.38869</code></pre>
+<pre class="r"><code>shaq$label</code></pre>
+<pre><code>## [1] &quot;正常&quot;</code></pre>
 </div>
 <div id="例外處理" class="section level1">
 <h1>例外處理</h1>
@@ -594,13 +596,13 @@ custom_as_numeric &lt;- function(x) {
     return(as.numeric(x))
   },
   warning = function(w) {
-    return(&quot;請不要輸入文字向量。&quot;)
+    return(&quot;請勿輸入文字向量。&quot;)
   })
 }
 custom_as_numeric(TRUE)</code></pre>
 <pre><code>## [1] 1</code></pre>
 <pre class="r"><code>custom_as_numeric(&quot;TRUE&quot;)</code></pre>
-<pre><code>## [1] &quot;請不要輸入文字向量。&quot;</code></pre>
+<pre><code>## [1] &quot;請勿輸入文字向量。&quot;</code></pre>
 </div>
 
 

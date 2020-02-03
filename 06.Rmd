@@ -45,34 +45,24 @@ PetData$result$results[c('行號名稱','分區')]
 library(XML)
 
 
-a<-xmlParse(file = "doswTaipei.xml")
+wq<-xmlParse(file = "doswTaipei.xml")
 
-
+wq
 
 ```
+
 ```{r}
-# 取出 XML 的根節點
-xml.top <- xmlRoot(a)
+#取得所有"code_name"標籤內的資料
 
-# 查看節點名稱
-xmlName(xml.top)
-
-# 查看子節點數量
-xmlSize(xml.top)
-
-# 查看子結點
-names(xml.top[[1]])
-
-# 依照名稱取出節點
-(xml.leaf <- xml.top[[1]][["ADDRESS_CODE"]])
-
-(xml.leaf.value <- xmlValue(xml.leaf))
+xpathSApply(wq,"//code_name",xmlValue)[1:10]
 
 ```
 
-
-
-
+```{r}
+#取得各監測站的經度
+xpathSApply(wq,"//longitude",xmlValue)[1:10]
+xpathSApply(wq,"//latitude",xmlValue)[1:10]
+```
 
 
 

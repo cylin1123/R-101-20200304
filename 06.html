@@ -373,7 +373,8 @@ summary {
 <h1>資料讀取</h1>
 <pre class="r"><code>#x&lt;-read.csv(&quot;A.csv&quot;,header=TRUE,encoding=&quot;Big5&quot;)
 #x</code></pre>
-<p>##<b> API JSON資料讀取</b></p>
+<div id="api-json資料讀取" class="section level2">
+<h2><b> API JSON資料讀取</b></h2>
 <pre class="r"><code>PetData&lt;-jsonlite::fromJSON(&quot;https://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&amp;rid=0175757e-7ec7-4074-ad6e-076342ba7c7b&quot;)
 str(PetData)</code></pre>
 <pre><code>## List of 1
@@ -495,41 +496,34 @@ str(PetData)</code></pre>
 ## 75                   平方寵物有限公司 信義區
 ## 76                     爪子寵物美容店 中山區
 ## 77                 金典屋寵物有限公司 大安區</code></pre>
-<p>##<b> XML資料讀取</b></p>
+</div>
+<div id="xml資料讀取" class="section level2">
+<h2><b> XML資料讀取</b></h2>
 <pre class="r"><code>library(XML)
 
 
-a&lt;-xmlParse(file = &quot;doswTaipei.xml&quot;)</code></pre>
+a&lt;-xmlParse(file = &quot;doswTaipei.xml&quot;)
+
+#a</code></pre>
 <pre class="r"><code># 取出 XML 的根節點
 xml.top &lt;- xmlRoot(a)
 
 # 查看節點名稱
 xmlName(xml.top)</code></pre>
-<pre><code>## [1] &quot;CommonFormat&quot;</code></pre>
+<pre><code>## [1] &quot;Envelope&quot;</code></pre>
 <pre class="r"><code># 查看子節點數量
 xmlSize(xml.top)</code></pre>
-<pre><code>## [1] 4</code></pre>
+<pre><code>## [1] 1</code></pre>
 <pre class="r"><code># 查看子結點
 names(xml.top[[1]])</code></pre>
-<pre><code>##        ADDRESS_CODE             L1_CODE             L1_NAME            ORG_TYPE 
-##      &quot;ADDRESS_CODE&quot;           &quot;L1_CODE&quot;           &quot;L1_NAME&quot;          &quot;ORG_TYPE&quot; 
-##      ORG_GROUP_NAME            ORG_NAME            DIVISION    PERSON_IN_CHARGE 
-##    &quot;ORG_GROUP_NAME&quot;          &quot;ORG_NAME&quot;          &quot;DIVISION&quot;  &quot;PERSON_IN_CHARGE&quot; 
-##        CONTACT_NAME           ZONE_CODE                CITY             ADDRESS 
-##      &quot;CONTACT_NAME&quot;         &quot;ZONE_CODE&quot;              &quot;CITY&quot;           &quot;ADDRESS&quot; 
-##               PHONE                 FAX        WEB_HOMEPAGE    ORG_INTRODUCTION 
-##             &quot;PHONE&quot;               &quot;FAX&quot;      &quot;WEB_HOMEPAGE&quot;  &quot;ORG_INTRODUCTION&quot; 
-##          REGISTERED   CREATE_DATE_TITLE         CREATE_DATE          PROP_TITLE 
-##        &quot;REGISTERED&quot; &quot;CREATE_DATE_TITLE&quot;       &quot;CREATE_DATE&quot;        &quot;PROP_TITLE&quot; 
-##                PROP         BEDNO_TITLE               BEDNO                 LAT 
-##              &quot;PROP&quot;       &quot;BEDNO_TITLE&quot;             &quot;BEDNO&quot;               &quot;LAT&quot; 
-##                 LON           DEPT_NAME           POST_DATE 
-##               &quot;LON&quot;         &quot;DEPT_NAME&quot;         &quot;POST_DATE&quot;</code></pre>
+<pre><code>##   GetGASResponse 
+## &quot;GetGASResponse&quot;</code></pre>
 <pre class="r"><code># 依照名稱取出節點
-(xml.leaf &lt;- xml.top[[1]][[&quot;ADDRESS_CODE&quot;]])</code></pre>
-<pre><code>## &lt;ADDRESS_CODE&gt;04530917387026548386&lt;/ADDRESS_CODE&gt;</code></pre>
+(xml.leaf &lt;- xml.top[[1]][[&quot;NAME&quot;]])</code></pre>
+<pre><code>## NULL</code></pre>
 <pre class="r"><code>(xml.leaf.value &lt;- xmlValue(xml.leaf))</code></pre>
-<pre><code>## [1] &quot;04530917387026548386&quot;</code></pre>
+<pre><code>## [1] NA</code></pre>
+</div>
 </div>
 
 
