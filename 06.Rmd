@@ -20,6 +20,13 @@ x
 x[ x$region == 2, c("region","age")]
 ```
 
+## <b> 資料寫檔</b>
+
+```{r}
+write.table(x,"a.csv",row.names = FALSE,col.names = TRUE,sep=",",fileEncoding="Big5")
+```
+
+
 
 
 ## <b> API JSON資料讀取</b>

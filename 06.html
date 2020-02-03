@@ -699,6 +699,10 @@ x</code></pre>
 ## 75      2  78
 ## 93      2  42</code></pre>
 </div>
+<div id="資料寫檔" class="section level2">
+<h2><b> 資料寫檔</b></h2>
+<pre class="r"><code>write.table(x,&quot;a.csv&quot;,row.names = FALSE,col.names = TRUE,sep=&quot;,&quot;,fileEncoding=&quot;Big5&quot;)</code></pre>
+</div>
 <div id="api-json資料讀取" class="section level2">
 <h2><b> API JSON資料讀取</b></h2>
 <pre class="r"><code>PetData&lt;-jsonlite::fromJSON(&quot;https://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&amp;rid=0175757e-7ec7-4074-ad6e-076342ba7c7b&quot;)
