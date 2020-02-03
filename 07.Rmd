@@ -10,6 +10,10 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ### 描述性統計分析:
+
+敘述統計乃是隨機抽樣的樣本集合，進行某些計算與繪圖，以便忠實的呈現出樣本的某些特性。這些計算出的數值，以及呈現出來的圖形，可以反映出樣本的某些統計特性，讓統計者能透過數值或圖形，大致了解樣本的統計特徵。
+
+統計數值
 - 基本信息：樣本數、總和
 - 集中趨勢：均值、中位數、眾數
 - 離散趨勢：方差(標準差)、變異系數、全距(最小值、最大值)、內四分位距(25%分位數、75%分位數)
@@ -21,60 +25,42 @@ knitr::opts_chunk$set(echo = TRUE)
 summary(iris)
 ```
 
-### 使用median()計算資料中位數
-- na.rm = TRUE : 若有NA值則移除
 ```{r}
-y1 = c(165,166,167,168,175,176)
-median(y1,na.rm = TRUE)
-```
-
-### 取得計算資料中最大/小數值
-```{r}
-max(y1)
-min(y1)
-```
-
-### 取得計算資料全距
-```{r}
-max(y1)-min(y1)
-range(y1)
-```
-
-### 取得計算資料第1,2,3分位數
-```{r}
-quantile(y1,0.25)
-quantile(y1,0.5)
-quantile(y1,0.75)
-IQR(y1)
-```
-
-### 計算資料變異數,標準差
-```{r}
-var(y1)
-sd(y1)
+str(iris)
 ```
 
 
 ```{r}
-table(y1)
-which.max(table(y1))
+#平均值
+mean(iris$Sepal.Length,rm=TRUE)
 ```
 
 ```{r}
-cor(y1,y1)
+#變異數
+var(iris$Sepal.Length)
+```
+
+```{r}
+#標準差
+sd(iris$Sepal.Length)
+```
+
+```{r}
+#最小值
+min(iris$Sepal.Length,rm=TRUE)
+```
+
+```{r}
+#最大值
+max(iris$Sepal.Length,rm=TRUE)
+```
+
+```{r}
+#百分位值
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+```{r}
+quantile(iris$Sepal.Length,rm=TRUE)
+```
 
