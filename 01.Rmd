@@ -34,3 +34,12 @@ Comprehensive R Archive Network（R綜合典藏網）的簡稱。它除了收藏
 - R Studio  <https://rstudio.com/>
 
 
+### <b>常用套件相關指令</b>
+
+- install.packages("pakcage") : 安裝套件
+- library("package")  : 引用套件
+- remove.packages("package") : 移除套件
+- installed.packages() / library(): 檢視已安裝套件清單
+- update.package():更新所有套件
+
+
