@@ -1,0 +1,79 @@
+---
+title: "資料讀取與匯出"
+author: "Nick"
+date: "2020/1/31"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 資料讀取
+
+```{r}
+#x<-read.csv("A.csv",header=TRUE,encoding="Big5")
+#x
+```
+
+
+
+
+## <b> API JSON資料讀取</b>
+
+
+```{r}
+PetData<-jsonlite::fromJSON("https://data.taipei/opendata/datalist/apiAccess?scope=resourceAquire&rid=0175757e-7ec7-4074-ad6e-076342ba7c7b")
+str(PetData)
+
+```
+
+```{r}
+head(PetData$result$results)
+
+```
+
+```{r}
+PetData$result$results[c('行號名稱','分區')]
+
+```
+
+## <b> XML資料讀取</b>
+
+```{r}
+
+library(XML)
+
+
+a<-xmlParse(file = "doswTaipei.xml")
+
+
+
+```
+```{r}
+# 取出 XML 的根節點
+xml.top <- xmlRoot(a)
+
+# 查看節點名稱
+xmlName(xml.top)
+
+# 查看子節點數量
+xmlSize(xml.top)
+
+# 查看子結點
+names(xml.top[[1]])
+
+# 依照名稱取出節點
+(xml.leaf <- xml.top[[1]][["ADDRESS_CODE"]])
+
+(xml.leaf.value <- xmlValue(xml.leaf))
+
+```
+
+
+
+
+
+
+
+

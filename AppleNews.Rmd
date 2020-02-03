@@ -1,0 +1,46 @@
+---
+title: "AppleNews"
+author: "Nick"
+date: "2020/2/3"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+
+library(rvest)
+
+page.source <- read_html("http://www.appledaily.com.tw/realtimenews/section/new/")
+page.source
+```
+
+```{r}
+
+content<-html_nodes(page.source, '.rtddt h1')
+content
+
+```
+
+
+```{r}
+
+news.title <- html_text(content)
+
+for (i in 1:length(news.title)) {
+  
+  print(news.title[i])
+  
+}
+
+```
+
+```{r}
+
+
+
+
+
+```
+

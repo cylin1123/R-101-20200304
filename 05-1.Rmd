@@ -1,5 +1,5 @@
 ---
-title: "流程控制及自訂函數-1"
+title: "流程控制及自訂函數"
 author: "Nick"
 date: "2020/1/31"
 output: html_document
@@ -192,4 +192,136 @@ apply(x, 1, sum)
 ```{r}
 apply(x, 2, sum)
 ```
+
+
+
+
+
+# 自訂函數
+
+```{r}
+
+custom_squared <- function(x) {
+  squared_x <- x**2
+  return(squared_x)
+}
+
+custom_squared(-3)
+custom_squared(-3:3)
+
+
+```
+
+```{r}
+get_bmi <- function(height, weight) {
+  height <- height/100
+  bmi <- weight / height**2
+  return(bmi)
+}
+get_bmi(216, 147)
+get_bmi(c(216, 198), c(147, 98))
+
+```
+
+
+
+
+```{r}
+
+circle_calculator <- function(r, is_area = TRUE) {
+  # R 語言有內建圓周率 pi
+  area <- pi * r**2
+  perimeter <- 2 * pi * r
+  if (is_area) {
+    return(area)
+  } else {
+    return(perimeter)
+  }
+}
+circle_calculator(3) # 預設回傳圓形面積
+circle_calculator(3, is_area = FALSE) # 回傳圓形周長
+
+```
+
+
+
+
+```{r}
+bmi_calculator <- function(height, weight) {
+  height <- height/100
+  bmi <- weight / height**2
+  if (bmi < 18.5) {
+    bmi_label <- "過輕"
+  } else if (bmi > 30) {
+    bmi_label <- "肥胖"
+  } else if (bmi >= 18.5 & bmi < 25) {
+    bmi_label <- "正常"
+  } else {
+    bmi_label <- "過重"
+  }
+  bmi_list <- list(
+    bmi = bmi,
+    bmiLabel = bmi_label
+  )
+  return(bmi_list)
+}
+shaq <- bmi_calculator(216, 147)
+shaq$bmi
+shaq$bmiLabel
+```
+
+
+# 例外處理
+
+```{r}
+# 沒有例外處理
+custom_as_numeric <- function(x) {
+  return(as.numeric(x))
+}
+custom_as_numeric(TRUE)
+custom_as_numeric("TRUE")
+
+# 有例外處理
+custom_as_numeric <- function(x) {
+  tryCatch({
+    return(as.numeric(x))
+  },
+  warning = function(w) {
+    return("請不要輸入文字向量。")
+  })
+}
+custom_as_numeric(TRUE)
+custom_as_numeric("TRUE")
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
